@@ -1,26 +1,26 @@
 const connection = require('./connection.js');
 
-const printQuestionMarks = (num) => {
-  const arr = [];
+// const printQuestionMarks = (num) => {
+//   const arr = [];
 
-  for (let i = 0; i < num; i++) {
-    arr.push('?');
-  }
+//   for (let i = 0; i < num; i++) {
+//     arr.push('?');
+//   }
 
-  return arr.toString();
-};
+//   return arr.toString();
+// };
 
-const objToSql = (ob) => {
-  const arr = [];
+// const objToSql = (ob) => {
+//   const arr = [];
 
-  for (const key in ob) {
-    let value = ob[key];
-    if (Object.hasOwnProperty.call(ob, key)) 
-      arr.push(`${key}=${value}`);
-  }
+//   for (const key in ob) {
+//     let value = ob[key];
+//     if (Object.hasOwnProperty.call(ob, key)) 
+//       arr.push(`${key}=${value}`);
+//   }
 
-  return arr.toString();
-};
+//   return arr.toString();
+// };
 
 const orm = {
   all(tableInput, cb) {
@@ -33,7 +33,7 @@ const orm = {
     });
   },
 
-  create(table, cols, vals, cb) {
+  create(table, cols, value, cb) {
     let queryString = `INSERT INTO ${table}`;
 
     queryString += ' (';
@@ -54,7 +54,7 @@ const orm = {
     });
   },
 
-  update(table, objColVals, condition, cb) {
+  update(table, objColVals, value, cb) {
     let queryString = `UPDATE ${table}`;
 
     queryString += ' SET ';
