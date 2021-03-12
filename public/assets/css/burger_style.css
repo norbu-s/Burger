@@ -1,1 +1,13 @@
-body { background-color: yellow;}
+html, body {
+    min-height: 100vh;
+    height: fit-content;
+}
+
+body{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(210, 255, 126);
+    width: 100%;
+
+}
