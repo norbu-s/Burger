@@ -5,10 +5,10 @@ const burger = {
     orm.all('burger', (res) => cb(res));
   },
 
-  create(cols, vals, cb) {
+  create(vals, cb) {
     orm.create('burger', 'burger_name', vals, (res) => cb(res));
   },
-  update(objColVals, condition, cb) {
+  update(condition, cb) {
     orm.update('burger', 'devoured', condition, (res) => cb(res));
   },
   delete(condition, cb) {

@@ -13,7 +13,7 @@ const orm = {
 
   create(tableName, colName, value, cb) {
     const queryString = 'INSERT INTO ?? (??) VALUES (?)';
-    connection.query(query, [tableName, colName, value],
+    connection.query(queryString, [tableName, colName, value],
         (err, result) => {
             if (err) throw err;
             cb(result);
@@ -22,8 +22,8 @@ const orm = {
 },
 
   update(tableName, colName, colVal, conditionCol, conditionVal, cb) {
-    const query = 'UPDATE ?? SET ?? = ? WHERE ?? = ?';
-        connection.query(query, [tableName, colName, colVal, conditionCol, conditionVal],
+    const queryString = 'UPDATE ?? SET ?? = ? WHERE ?? = ?';
+        connection.query(queryString, [tableName, colName, colVal, conditionCol, conditionVal],
             (err, result) => {
                 if (err) throw err;
                 cb(result);
@@ -32,8 +32,8 @@ const orm = {
     },
 
   deleteOne(tableName, conditionCol, conditionVal, cb) {
-        const query = 'DELETE FROM ?? WHERE ?? = ?';
-        connection.query(query, [tableName, conditionCol, conditionVal],
+        const queryString = 'DELETE FROM ?? WHERE ?? = ?';
+        connection.query(queryString, [tableName, conditionCol, conditionVal],
             (err, result) => {
                 if (err) throw err;
                 cb(result);

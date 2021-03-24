@@ -39,17 +39,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
       });
     }
   
-    const createBurgerBtn = document.getElementById('create-form');
+    const createBurgerForm = document.getElementById('createBurgers');
   
-    if (createBurgerBtn) {
-      createBurgerBtn.addEventListener('submit', (e) => {
+    if (createBurgerForm) {
+      createBurgerForm.addEventListener('submit', (e) => {
         e.preventDefault();
   
         const newBurger = {
-          name: document.getElementById('bu').value.trim()
+          name: document.getElementById('burgerName').value.trim()
         };
 
-        fetch('/api/burgers', {
+        fetch('/api/add', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
@@ -57,11 +57,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
           },
   
           body: JSON.stringify(newBurger),
-        }).then(() => {
-          document.getElementById('bu').value = '';
-  
-          
-          console.log('Burger Added!');
+        }).then((res) => {
+          console.log(res)
           location.reload();
         });
       });
@@ -74,12 +71,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const id = e.target.getAttribute('data-id');
   
         // Send the delete request
-        fetch(`/api/burgers/${id}`, {
+        fetch(`/api/burger/${id}`, {
           method: 'DELETE',
         }).then((res) => {
-          console.log(res);
-          console.log(`Devoured: ${id}`);
-  
           // Reload the page
           location.reload();
         });
