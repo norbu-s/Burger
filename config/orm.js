@@ -21,9 +21,9 @@ const orm = {
     );
 },
 
-  update(tableName, colName, colVal, conditionCol, conditionVal, cb) {
+  update(tableName, colName, condition, cb) {
     const queryString = 'UPDATE ?? SET ?? = ? WHERE ?? = ?';
-        connection.query(queryString, [tableName, colName, colVal, conditionCol, conditionVal],
+        connection.query(queryString, [tableName, colName, condition, cb],
             (err, result) => {
                 if (err) throw err;
                 cb(result);
@@ -31,9 +31,9 @@ const orm = {
         );
     },
 
-  deleteOne(tableName, conditionCol, conditionVal, cb) {
+  deleteOne(tableName, colName, condition, cb) {
         const queryString = 'DELETE FROM ?? WHERE ?? = ?';
-        connection.query(queryString, [tableName, conditionCol, conditionVal],
+        connection.query(queryString, [tableName, colName, condition, cb],
             (err, result) => {
                 if (err) throw err;
                 cb(result);

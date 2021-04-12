@@ -3,11 +3,29 @@ html, body {
     height: fit-content;
 }
 
-body{
-    position: relative;
-    margin: 0;
-    padding: 0;
-    background-color: rgb(210, 255, 126);
-    width: 100%;
+body {
+    background-image: url("");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin:0;
+    background-color: wheat;
+}
 
+#jumbo-header {
+    text-align: center;
+}
+
+.devoured-container {
+    float:right;
+    display: block;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.to-eat-container {
+    display: block;
+    position: absolute;
+    width: 100%;
+    margin-top: 50px
 }

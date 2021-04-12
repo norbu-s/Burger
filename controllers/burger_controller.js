@@ -19,14 +19,14 @@ router.post("/api/add", (req, res) => {
   });
 });
 
-router.put("/api/devour/:id", (req, res) => {
-  burger.update([req.body.devoured, req.params.id], condition, (result) => {
-    if (result.changedRows === 0) {
-      return res.status(404).end();
-    }
-    res.status(200).end();
-  });
-});
+// router.put("/api/devour/:id", (req, res) => {
+//   burger.update([req.body.devoured, req.params.id], condition, (result) => {
+//     if (result.changedRows === 0) {
+//       return res.status(404).end();
+//     }
+//     res.status(200).end();
+//   });
+// });
 
 router.delete("/api/devour/:id", (req, res) => {
   const condition = `id = ${req.params.id}`;
