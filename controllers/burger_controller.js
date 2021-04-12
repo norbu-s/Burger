@@ -3,7 +3,7 @@ const burger = require("../models/burger");
 
 const router = express.Router();
 
-router.get("/api/all", (req, res) => {
+router.get("/all", (req, res) => {
     burger.all((data) => {
         const hbsObject = {
             burger: data,
@@ -13,13 +13,13 @@ router.get("/api/all", (req, res) => {
     });
 });
 
-router.post("/api/add", (req, res) => {
+router.post("/add", (req, res) => {
     burger.create(req.body.name, (result) => {
         res.json({ id: result.insertId });
     });
 });
 
-router.put("/api/devour/:id", (req, res) => {
+router.put("/devour/:id", (req, res) => {
     burger.update([req.body.devoured, req.params.id], condition, (result) => {
         if (result.changedRows === 0) {
             return res.status(404).end();
@@ -28,7 +28,7 @@ router.put("/api/devour/:id", (req, res) => {
     });
 });
 
-router.delete("/api/devour/:id", (req, res) => {
+router.delete("/devour/:id", (req, res) => {
     const condition = `id = ${req.params.id}`;
 
     burger.delete(condition, (result) => {
