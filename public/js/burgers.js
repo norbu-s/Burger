@@ -37,43 +37,57 @@ document.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 
-    const createBurgerForm = document.getElementById("createBurgers");
+    const submitForm = document.getElementById("createBurgers");
 
-    if (createBurgerForm) {
-        createBurgerForm.addEventListener("submit", (e) => {
+    submitForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const burgerName = document.getElementById("burgerName").value.trim();
+        if (burgerName === "") {
+            return;
+        }
+        const newBurger = {
+            burger_name: burgerName,
+        };
+
+        fetch("/add", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newBurger),
+        }).then(() => {
+            document.getElementById("burgerName").value = "";
+            location.reload("");
+        });
+    });
+
+    const devourBtn = document.querySelectorAll(".devour-button");
+
+    devourBtn.forEach((item) => {
+        item.addEventListener("click", (e) => {
             e.preventDefault();
 
-            const newBurger = {
-                name: document.getElementById("burgerName").value.trim(),
+            const dataId = e.target.getAttribute("data-id");
+            const id = parseInt(dataId);
+
+            const devouredTrue = {
+                devoured: true,
             };
 
-            fetch("/add", {
-                method: "POST",
+            fetch(`/devour/${id}`, {
+                method: "PUT",
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
                 },
-
-                body: JSON.stringify(newBurger),
-            }).then((res) => {
-                console.log(res);
-                location.reload();
-            });
-        });
-    }
-
-    const removeBurgerform = document.querySelectorAll("deleteBurgers");
-
-    removeBurgerform.forEach((button) => {
-        button.addEventListener("click", (e) => {
-            const id = e.target.getAttribute("data-id");
-
-            // Send the delete request
-            fetch(`/devour/${id}`, {
-                method: "DELETE",
-            }).then((res) => {
-                // Reload the page
-                location.reload();
+                body: JSON.stringify(devouredTrue),
+            }).then((response) => {
+                if (response.ok) {
+                    location.reload("");
+                } else {
+                    alert("Oops, something went wrong!");
+                }
             });
         });
     });

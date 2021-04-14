@@ -3,16 +3,6 @@ const burger = require("../models/burger");
 
 const router = express.Router();
 
-router.get("/all", (req, res) => {
-    burger.all((data) => {
-        const hbsObject = {
-            burger: data,
-        };
-        console.log(hbsObject);
-        res.render("index", hbsObject);
-    });
-});
-
 router.post("/add", (req, res) => {
     burger.create(req.body.name, (result) => {
         res.json({ id: result.insertId });
