@@ -8,11 +8,11 @@ const burger = {
     create(vals, cb) {
         orm.create('burger', 'burger_name', vals, (res) => cb(res));
     },
-    update(condition, cb) {
-        orm.update('burger', 'devoured', condition, (res) => cb(res));
+    update(value, id, cb) {
+        orm.update('burger', 'devoured', value, id, (res) => cb(res));
     },
-    delete(condition, cb) {
-        orm.delete('burger', 'id', condition, (res) => cb(res));
+    delete(id, cb) {
+        orm.deleteOne('burger', id, (res) => cb(res));
     },
 };
 

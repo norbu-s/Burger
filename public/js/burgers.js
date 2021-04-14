@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             },
             body: JSON.stringify(newBurger),
         }).then(() => {
-            document.getElementById("burgerName").value = "";
+            // document.getElementById("burgerName").value = "";
             location.reload("");
         });
     });
@@ -71,9 +71,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
             const dataId = e.target.getAttribute("data-id");
             const id = parseInt(dataId);
 
-            const devouredTrue = {
-                devoured: true,
-            };
+            // const devouredTrue = {
+            //     devoured: true,
+            // };
 
             fetch(`/devour/${id}`, {
                 method: "PUT",
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     Accept: "application/json",
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(devouredTrue),
+                // body: JSON.stringify(devouredTrue),
             }).then((response) => {
                 if (response.ok) {
                     location.reload("");
@@ -91,4 +91,33 @@ document.addEventListener("DOMContentLoaded", (event) => {
             });
         });
     });
+
+    // const unDevourBtn = document.querySelectorAll(".undevour-button");
+    // unDevourBtn.forEach((item) => {
+    //     item.addEventListener("click", (e) => {
+    //         e.preventDefault();
+
+    //         const dataId = e.target.getAttribute("data-id");
+    //         const id = parseInt(dataId);
+
+    //         // const devouredFalse = {
+    //         //     devoured: fasle,
+    //         // };
+
+    //         fetch(`/devour/${id}`, {
+    //             method: "DELETE",
+    //             headers: {
+    //                 Accept: "application/json",
+    //                 "Content-Type": "application/json",
+    //             },
+    //             // body: JSON.stringify(devouredFalse),
+    //         }).then((response) => {
+    //             if (response.ok) {
+    //                 location.reload("");
+    //             } else {
+    //                 alert("Oops, something went wrong!");
+    //             }
+    //         });
+    //     });
+    // });
 });

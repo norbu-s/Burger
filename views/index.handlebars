@@ -1,8 +1,7 @@
 <div class="container">
   <h1> Eat Da Burger!!!</h1>
-    <div class="row">
-      <div class="col-sm-5">
-        
+  <div class="row">
+    <div class="col-sm-5">
       <h3> What type of burger would you like?</h3>
       <form id="createBurgers" action="/add" method="POST">
         <input type="text" id="burgerName" name="burgerName" placeholder="Enter a burger you want to eat">
@@ -16,19 +15,16 @@
   <h2> Devour</h2>
   <hr>
   <ul>
-    {{#each newBurger}}
-      {{#if this.devoured}}
-        <li>
-          <p>{{this.burger_name}} </p>
-          </li>
-            <h3> Devour this burger?</h3>
-              <form id="deleteBurgers" action="/devour" method="DELETE">
-            <input type="text" id="devouredBurger" name="devouredBurger">
-          <button type="submit">Devour Burger</button>
-        </form>
-      </li>
-    {{/if}}
-  {{/each}}
+    {{#each allBurgers}}
+    {{!-- {{#if this.devoured}}  --}}
+    <li>
+      <p>{{this.burger_name}} </p>
+    </li>
+    <h3> Devour this burger?</h3>
+      {{#unless this.devoured}} <button class="devour-button" data-id="{{this.id}}">Devour Burger</button>{{/unless}}
+    </form>
+    </li>
+    {{/each}}
   </ul>
 </div>
 </div>
