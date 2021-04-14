@@ -19,9 +19,7 @@ To install this application locally, download the package, then run the schema.s
 Norbu Sherpa
 
 
-Project Links
-
-Project URL - 
+# Project Links
 
 Github Repository - https://github.com/norbu-s/Burger
 
