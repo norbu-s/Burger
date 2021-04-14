@@ -1,4 +1,4 @@
-# Restaurant Otaku
+# Eat Da Burger!!
 Project Description
 A full stack web application which  uses a remote server and database to manage a list of burgers submitted by users. The users can interact with the front end to create new items in the database and update existing items.
 
@@ -24,6 +24,8 @@ Project Links
 Project URL - 
 
 Github Repository - https://github.com/norbu-s/Burger
+
+Deployed link - https://powerful-ocean-56687.herokuapp.com/
 
 
 
