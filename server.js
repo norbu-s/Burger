@@ -25,6 +25,4 @@ app.use(routes);
 
 
 // Start our server so that it can begin listening to client requests.
-app.listen(PORT, () =>
-    console.log(`Server listening on: http://localhost:${PORT}`)
-);
+app.listen(process.env.PORT || 5000)
